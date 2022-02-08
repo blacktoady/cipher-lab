@@ -88,7 +88,7 @@ class Caesar:
         encr_list = list()
 
         for i in self.phrase:
-            if alphavite_letter.get(i):
+            if alphavite_letter.get(i) >= 0:
                 letter_num = int(alphavite_letter.get(i))
                 encr_num = letter_num + self.key
 
@@ -102,7 +102,7 @@ class Caesar:
     def decode(self):
         dec_list = list()
         for i in self.phrase:
-            if alphavite_letter.get(i):
+            if alphavite_letter.get(i) >= 0:
                 letter_num = int(alphavite_letter.get(i))
                 dec_num = letter_num - self.key
                 if dec_num < 0:
@@ -123,7 +123,7 @@ class Linear:
 
         if isprime(len(self.phrase)) and self.key < len(alphavite_num) and self.key >= 0:
             for i in self.phrase:
-                if alphavite_letter.get(i):
+                if alphavite_letter.get(i) >= 0:
                     letter_num = int(alphavite_letter.get(i))
                     letter_num = (letter_num * self.key) % len(alphavite_num)
                     encr_list.append(alphavite_num.get(letter_num))
@@ -139,7 +139,7 @@ class Linear:
 
         if isprime(len(self.phrase)) and self.key < len(alphavite_num) and self.key >= 0:
             for i in self.phrase:
-                if alphavite_letter.get(i):
+                if alphavite_letter.get(i) >= 0:
                     letter_num = int(alphavite_letter.get(i))
                     letter_num = (letter_num * pow(self.key, -1, len(alphavite_num))) % len(alphavite_num)
                     decr_list.append(alphavite_num.get(letter_num))
@@ -162,7 +162,7 @@ class Affine:
 
         if isprime(len(self.phrase)) and self.key1 < len(alphavite_num) and self.key1 >= 0 and self.key2 < len(alphavite_num) and self.key2 >= 0:
             for i in self.phrase:
-                if alphavite_letter.get(i):
+                if alphavite_letter.get(i) >= 0:
                     letter_num = int(alphavite_letter.get(i))
                     letter_num = (letter_num * self.key1 + self.key2) % len(alphavite_num)
                     encr_list.append(alphavite_num.get(letter_num))
@@ -181,7 +181,7 @@ class Affine:
         t_inv = pow((-k_inv * self.key2), 1, len(alphavite_num))
         if isprime(len(self.phrase)) and self.key1 < len(alphavite_num) and self.key1 >= 0 and self.key2 < len(alphavite_num) and self.key2 >= 0:
             for i in self.phrase:
-                if alphavite_letter.get(i):
+                if alphavite_letter.get(i) >= 0:
                     letter_num = int(alphavite_letter.get(i))
                     letter_num = (letter_num * k_inv + t_inv) % len(alphavite_num)
                     decr_list.append(alphavite_num.get(letter_num))
@@ -229,7 +229,7 @@ if __name__ == '__main__':
     # Linear('qwertyu', 3).encrypt()
     # Linear('WOMZFUI', 3).decode()
 
-    # Caesar('qwerty', 3).encrypt()
-    # Caesar('TZHUWB', 3).decode()
+    # Caesar('alpha', 3).encrypt()
+    # Caesar('doskd', 3).decode()
 
 
