@@ -1,6 +1,9 @@
 from colors import bcolors
 from sympy import isprime
 
+
+DEBUG = False
+
 # alphavite_num = {
 #     0: 'a', 1: 'b', 2: 'c', 3: 'd', 4: 'e', 5: 'f', 6: 'g', 7: 'h', 8: 'i', 9: 'j', 10: 'k', 11: 'l', 12: 'm', 13: 'n', 14: 'o', 15: 'p',
 #     16: 'q', 17: 'r', 18: 's', 19: 't', 20: 'u', 21: 'v', 22: 'w', 23: 'x', 24: 'y', 25: 'z',
@@ -81,6 +84,10 @@ alphavite_letter = {
     'ю': 31,
     'я': 32,
 }
+
+polygramm_letter = ["а", "б", "в", "г", "ґ", "д", "е", "є", "ж", "з", "и", "і", "ї", "й", "к", "л", "м", "н", "о", "п", "р", "с", "т", "у", "ф", "х", "ц", "ч", "ш", "щ", "ь", "ю", "я", ".", ",", " "]
+
+# print(len(polygramm_letter))
 
 class Caesar:
     def __init__(self, phrase, key):
@@ -195,44 +202,52 @@ class Affine:
         else:
             print(bcolors.WARNING + "key isn't correct!" + bcolors.ENDC)
 
+# class Playfair:
+#     def __init__
+
 if __name__ == '__main__':
 
-    print(bcolors.HEADER +
-            '      :::     :::   :::       ::::::::           :::        ::::    :::\n',
-            '     :+:     :+:   :+:      :+:    :+:        :+: :+:      :+:+:   :+:\n',
-            '    +:+      +:+ +:+       +:+              +:+   +:+     :+:+:+  +:+\n',
-            '   +#+       +#++:        +#+             +#++:++#++:    +#+ +:+ +#+\n',
-            '  +#+        +#+         +#+             +#+     +#+    +#+  +#+#+#\n',
-            ' #+#        #+#         #+#    #+#      #+#     #+#    #+#   #+#+#\n',
-            '########## ###          ########       ###     ###    ###    ####\n' + bcolors.ENDC)
+    if DEBUG :
+        print(bcolors.WARNING + 'DEBUG MODE' + bcolors.ENDC)
+        Affine('qwertyu', 3, 2).encrypt()
+        Affine('YQOBHWK', 3, 2).decode()
 
-    type_cipher = int(input('select cipher and press ENTER:\n1. Caesar\n2. Linear\n3. Affine\n'))
-    operation_cypher = int(input('select cipher operation and press ENTER:\n1. Encrypt\n2. Decrypt\n'))
-    phrase = input('enter your phrase:\n')
-    phrase = phrase.replace(',', '').replace(' ', '')
-    key1 = input('key:\n')
-    key2 = input('key 2(if exist, else leave blank and press ENTER):\n')
-    if type_cipher == 1 and operation_cypher == 1:
-        Caesar(phrase, key1).encrypt()
-    elif type_cipher == 1 and operation_cypher == 2:
-        Caesar(phrase, key1).decode()
-    elif type_cipher == 2 and operation_cypher == 1:
-        Linear(phrase, key1).encrypt()
-    elif type_cipher == 2 and operation_cypher == 2:
-        Linear(phrase, key1).decode()
-    elif type_cipher == 3 and operation_cypher == 1:
-        Affine(phrase, key1, key2).encrypt()
-    elif type_cipher == 3 and operation_cypher == 2:
-        Affine(phrase, key1, key2).decode()
+        Linear('qwertyu', 3).encrypt()
+        Linear('WOMZFUI', 3).decode()
+
+        Caesar('alpha', 3).encrypt()
+        Caesar('doskd', 3).decode()
+
     else:
-        print(bcolors.WARNING + "something wen't wrong.." + bcolors.ENDC)
-    # Affine('qwertyu', 3, 2).encrypt()
-    # Affine('YQOBHWK', 3, 2).decode()
+        print(bcolors.HEADER +
+                '      :::     :::   :::       ::::::::           :::        ::::    :::\n',
+                '     :+:     :+:   :+:      :+:    :+:        :+: :+:      :+:+:   :+:\n',
+                '    +:+      +:+ +:+       +:+              +:+   +:+     :+:+:+  +:+\n',
+                '   +#+       +#++:        +#+             +#++:++#++:    +#+ +:+ +#+\n',
+                '  +#+        +#+         +#+             +#+     +#+    +#+  +#+#+#\n',
+                ' #+#        #+#         #+#    #+#      #+#     #+#    #+#   #+#+#\n',
+                '########## ###          ########       ###     ###    ###    ####\n' + bcolors.ENDC)
 
-    # Linear('qwertyu', 3).encrypt()
-    # Linear('WOMZFUI', 3).decode()
+        type_cipher = int(input('select cipher and press ENTER:\n1. Caesar\n2. Linear\n3. Affine\n'))
+        operation_cypher = int(input('select cipher operation and press ENTER:\n1. Encrypt\n2. Decrypt\n'))
+        phrase = input('enter your phrase:\n')
+        phrase = phrase.replace(',', '').replace(' ', '')
+        key1 = input('key:\n')
+        key2 = input('key 2(if exist, else leave blank and press ENTER):\n')
+        if type_cipher == 1 and operation_cypher == 1:
+            Caesar(phrase, key1).encrypt()
+        elif type_cipher == 1 and operation_cypher == 2:
+            Caesar(phrase, key1).decode()
+        elif type_cipher == 2 and operation_cypher == 1:
+            Linear(phrase, key1).encrypt()
+        elif type_cipher == 2 and operation_cypher == 2:
+            Linear(phrase, key1).decode()
+        elif type_cipher == 3 and operation_cypher == 1:
+            Affine(phrase, key1, key2).encrypt()
+        elif type_cipher == 3 and operation_cypher == 2:
+            Affine(phrase, key1, key2).decode()
+        else:
+            print(bcolors.WARNING + "something wen't wrong.." + bcolors.ENDC)
 
-    # Caesar('alpha', 3).encrypt()
-    # Caesar('doskd', 3).decode()
 
 
