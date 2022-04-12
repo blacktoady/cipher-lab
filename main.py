@@ -2,12 +2,13 @@ from colors import bcolors
 from sympy import isprime
 
 
-DEBUG = False
+DEBUG = True
 
-# alphavite_num = {
-#     0: 'a', 1: 'b', 2: 'c', 3: 'd', 4: 'e', 5: 'f', 6: 'g', 7: 'h', 8: 'i', 9: 'j', 10: 'k', 11: 'l', 12: 'm', 13: 'n', 14: 'o', 15: 'p',
-#     16: 'q', 17: 'r', 18: 's', 19: 't', 20: 'u', 21: 'v', 22: 'w', 23: 'x', 24: 'y', 25: 'z',
-# }
+alphavite_num_en = {
+    0: 'a', 1: 'b', 2: 'c', 3: 'd', 4: 'e', 5: 'f', 6: 'g', 7: 'h', 8: 'i', 9: 'j', 10: 'k', 11: 'l', 12: 'm', 13: 'n', 14: 'o', 15: 'p',
+    16: 'q', 17: 'r', 18: 's', 19: 't', 20: 'u', 21: 'v', 22: 'w', 23: 'x', 24: 'y', 25: 'z',
+}
+
 alphavite_num = {
     0: 'а',
     1: 'б',
@@ -45,10 +46,11 @@ alphavite_num = {
 
 }
 
-# alphavite_letter = {
-#     'a': 0, 'b': 1, 'c': 2, 'd': 3, 'e': 4, 'f': 5, 'g': 6, 'h': 7, 'i': 8, 'j': 9, 'k': 10, 'l': 11, 'm': 12, 'n': 13, 'o': 14, 'p': 15,
-#     'q': 16, 'r': 17, 's': 18, 't': 19, 'u': 20, 'v': 21, 'w': 22, 'x': 23, 'y': 24, 'z': 25,
-# }
+alphavite_letter_en = {
+    'a': 0, 'b': 1, 'c': 2, 'd': 3, 'e': 4, 'f': 5, 'g': 6, 'h': 7, 'i': 8, 'j': 9, 'k': 10, 'l': 11, 'm': 12, 'n': 13, 'o': 14, 'p': 15,
+    'q': 16, 'r': 17, 's': 18, 't': 19, 'u': 20, 'v': 21, 'w': 22, 'x': 23, 'y': 24, 'z': 25,
+}
+
 alphavite_letter = {
     'а': 0,
     'б': 1,
@@ -208,7 +210,11 @@ class Affine:
 if __name__ == '__main__':
 
     if DEBUG :
+        alphavite_num = alphavite_num_en
+        alphavite_letter = alphavite_letter_en
+
         print(bcolors.WARNING + 'DEBUG MODE' + bcolors.ENDC)
+    
         Affine('qwertyu', 3, 2).encrypt()
         Affine('YQOBHWK', 3, 2).decode()
 
